@@ -1,0 +1,84 @@
+﻿@using Software_Department_Project.Models;
+@using Software_Department_Project.ViewModel;
+@using System.Data;
+@{
+    ViewBag.Title = "Student";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+<head>
+    <title>Allocate</title>
+    <link rel="stylesheet" media="all" href="~/styles/style.css" />
+    <meta content='d12d09d636f399c5cbfa' name='pusher-key'>
+    <meta content='us2' name='pusher-cluster'>
+    <meta content='initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+    <script src='https://js.pusher.com/4.2.1/pusher.min.js'></script>
+    <script src='https://checkout.stripe.com/checkout.js'></script>
+    <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='/favicon.ico' rel='icon' type='image/x-icon'>
+    <script src="/assets/application-02e493e218e2ba9c7f087d0a7e45f8c8465279889e70e3b604b2fd95c1b46ffb.js"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="dKXbxCC07nIjhcx6A2IeFUkSuMvUX/cDUy5lJSYHDKFbVh+DJPxAnB1FWvyIwl5ouznu2whyWg+LiThA9Y9CQQ==" />
+</head>
+<body>
+    <div class="login">
+        <span><img src="~/images/logo.png" alt="" /></span>
+        <div class='buttons' style="width:10em;height:27px;position:absolute;right:0px;top:0px;">
+            @using (Html.BeginForm("Logout", "Student", FormMethod.Post, new { role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <button name="button" type="submit" value="Logout" style="background-color:crimson;" class="btn btn-login">Logout</button>
+            }
+        </div>
+        <div class="welcome-name">
+            <h1>Welcome @Model.student.FirstName</h1>
+        </div>
+
+        <table class="table-fill">
+            <div class="table-title">
+                <h3>Course Schedule</h3>
+            </div>
+            <tr>
+                <th>Course Name</th>
+                <th>Day</th>
+                <th>Hour</th>
+            </tr>
+            @foreach (Courses obj in Model.courses)
+            {
+                <tr>
+                    <td>@obj.CourseName</td>
+                    <td>@obj.Day</td>
+                    <td>@obj.Hour</td>
+                </tr>
+            }
+        </table>
+
+        <table class="table-fill">
+
+            <div class="table-title">
+                <h3>Exam Schedule</h3>
+            </div>
+
+            <tr>
+                <th>Course Name</th>
+                <th>Moed A</th>
+                <th>Moed B</th>
+                <th>Grade</th>
+            </tr>
+            @for (int i = 0; i < Model.courses.Count; i++)
+            {
+                <tr>
+                    <td>@Model.courses[i].CourseName</td>
+                    <td>@Model.courses[i].MoedA</td>
+                    <td>@Model.courses[i].MoedB</td>
+                    <td>@Model.studentCourses[i].Grade</td>
+                </tr>
+            }
+        </table>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</body>
+
+

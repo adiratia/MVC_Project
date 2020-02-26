@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<html class='print-black'>
+<head>
+    <title>Allocate</title>
+    <link rel="stylesheet" media="all" href="~/styles/style.css" />
+    <meta content='d12d09d636f399c5cbfa' name='pusher-key'>
+    <meta content='us2' name='pusher-cluster'>
+    <meta content='initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+    <script src='https://js.pusher.com/4.2.1/pusher.min.js'></script>
+    <script src='https://checkout.stripe.com/checkout.js'></script>
+    <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='/favicon.ico' rel='icon' type='image/x-icon'>
+    <script src="/assets/application-02e493e218e2ba9c7f087d0a7e45f8c8465279889e70e3b604b2fd95c1b46ffb.js"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="dKXbxCC07nIjhcx6A2IeFUkSuMvUX/cDUy5lJSYHDKFbVh+DJPxAnB1FWvyIwl5ouznu2whyWg+LiThA9Y9CQQ==" />
+
+    <meta http-equiv="Expires" CONTENT="0">
+    <meta http-equiv="Cache-Control" CONTENT="no-cache">
+    <meta http-equiv="Pragma" CONTENT="no-cache">
+</head>
+
+<body class='sessions print-black'>
+    <div id='main'  >
+        <div class='print-black' id='content'>
+            <form class="login" id="new_user" action="Verify" accept-charset="UTF-8" method="post" style="">
+                <input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" /><img alt="allocate" height="140" src="~/images/logo.png" />
+
+                <input autofocus="autofocus" placeholder="ID" class="input-flat email" type="text" name="ID" required pattern="^[0-9]+$" autocomplete="off" />
+                <input placeholder="Password" class="input-flat password" type="password" name="Password" id="user_password" required />
+                <div class='clear'></div>
+                <input name="user[remember_me]" type="hidden" value="0" /><input class="remember-me-check" type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
+                <label class="small-login-text remember-me-label" for="user_remember_me">Remember me</label>
+
+                <div class='buttons'>
+                    <button name="button" type="submit" class="btn btn-login">Login</button>
+                </div>
+                <p>@ViewBag.ErrorMessage4</p>
+            </form>
+        </div>
+    </div>
+    
+</body>
+</html>

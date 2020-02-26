@@ -1,0 +1,235 @@
+﻿@using Software_Department_Project.Models;
+@using System.Data;
+
+@{
+    ViewBag.Title = "Manager";
+    Layout = "~/Views/_LayoutPage1.cshtml";
+}
+
+<html class='print-black'>
+<head>
+    <title>Allocate</title>
+    <link rel="stylesheet" media="all" href="~/styles/style.css" />
+    <meta content='d12d09d636f399c5cbfa' name='pusher-key'>
+    <meta content='us2' name='pusher-cluster'>
+    <meta content='initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width' name='viewport'>
+    <script src='https://js.pusher.com/4.2.1/pusher.min.js'></script>
+    <script src='https://checkout.stripe.com/checkout.js'></script>
+    <link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'>
+    <link href='/favicon.ico' rel='icon' type='image/x-icon'>
+    <script src="/assets/application-02e493e218e2ba9c7f087d0a7e45f8c8465279889e70e3b604b2fd95c1b46ffb.js"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+    <meta name="csrf-token" content="dKXbxCC07nIjhcx6A2IeFUkSuMvUX/cDUy5lJSYHDKFbVh+DJPxAnB1FWvyIwl5ouznu2whyWg+LiThA9Y9CQQ==" />
+
+
+</head>
+
+<body class='sessions print-black'>
+    <span><img src="~/images/logo.png" alt="" /></span>
+    <div class='buttons' style="width:10em;height:27px;position:absolute;right:0px;top:0px;">
+        @using (Html.BeginForm("Logout", "Faculty", FormMethod.Post, new { role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <button name="button" type="submit" value="Logout" style="background-color:crimson;" class="btn btn-login">Logout</button>
+        }
+    </div>
+    <div class="welcome-name">
+        <h1>Welcome @Model.faculty.FirstName</h1>
+    </div>
+    <div class="blocks-container">
+        <div class="blocks" style="border-right: 1px solid #2e323e;">
+            @using (Html.BeginForm("StudentToCourse", "Faculty", FormMethod.Post))
+            {
+                <div class='print-black' id='content'>
+                    <div class="welcome-name" style="font-size: 8px;">
+                        <h1>Assign Student to Course:</h1>
+                    </div>
+                    <div class="select">
+                        <select id="AssignCourse" name="StudentID" required>
+                            <option value="" selected disabled>Student ID</option>
+                            @foreach (Student obj in Model.Studentsdata)
+                            {
+                                <option value=@obj.ID>@obj.ID</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div class="select">
+                        <select id="AssignCourse" name="CourseName" required>
+                            <option value="" selected disabled>Course</option>
+                            @foreach (Courses obj in Model.Coursesdata)
+                            {
+                                <option value=@obj.CourseName>@obj.CourseName</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div id='main'>
+                        <div class='buttons' style="position:relative;width:15em;height:30px;left:48px;">
+                            <button name="button" type="submit" id="StudentToCourse" class="btn btn-login">Assign</button>
+                        </div>
+                        <p>@ViewBag.ErrorMessage2</p>
+
+                    </div>
+                </div>
+                <br />
+            }
+            <div class='print-black' id='content'>
+                <div class="welcome-name" style="font-size: 8px;">
+                    <h1>Assign Lecturer to Course:</h1>
+                </div>
+                @using (Html.BeginForm("ChangeLecturer", "Faculty", FormMethod.Post))
+                {
+                    <div class="select">
+                        <select id="AssignCourse" name="LectID" required>
+                            <option value="" selected disabled>Lecturer ID</option>
+                            @foreach (Lecturer obj in Model.LecturersData)
+                            {
+                                <option value=@obj.ID>@obj.ID</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div class="select">
+                        <select ID="AssignCourse" name="CourseName">
+                            <option value="" selected disabled>Course</option>
+                            @foreach (Courses obj in Model.Coursesdata)
+                            {
+                                <option value=@obj.CourseName>@obj.CourseName</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div id='main'>
+                        <div class='buttons' style="position:relative;width:15em;height:30px;left:48px;">
+                            <button name="button" type="submit" id="AssignCourse" class="btn btn-login">Assign</button>
+                        </div>
+                        <p>@ViewBag.ErrorMessage3</p>
+
+                    </div>
+                }
+            </div>
+            <br />
+        </div>
+        <div class="blocks">
+            <div class='print-black' id='content'>
+                <div class="welcome-name" style="font-size: 8px;">
+                    <h1>Edit Course:</h1>
+                </div>
+                @using (Html.BeginForm("EditCourse", "Faculty", FormMethod.Post))
+                {
+                    <div class="select">
+                        <select id="Editcourse" name="CourseName" required>
+                            <option value="" selected disabled>Course</option>
+                            @foreach (Courses obj in Model.Coursesdata)
+                            {
+                                <option value=@obj.CourseName>@obj.CourseName</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div class="select">
+                        <select id="Editcourse" name="Day" required>
+                            <option value="" selected disabled>Day</option>
+                            <option value="sunday">Sunday</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                        </select>
+                    </div>
+                    <br />
+                    <div class="select">
+                        <select id="Editcourse" name="Hour" required>
+                            <option value="" selected disabled>Hour</option>
+                            <option value="08:00">08:00</option>
+                            <option value="09:00">09:00</option>
+                            <option value="10:00">10:00</option>
+                            <option value="11:00">11:00</option>
+                            <option value="12:00">12:00</option>
+                            <option value="13:00">13:00</option>
+                            <option value="14:00">14:00</option>
+                            <option value="15:00">15:00</option>
+                            <option value="16:00">16:00</option>
+                            <option value="17:00">17:00</option>
+                            <option value="18:00">18:00</option>
+                            <option value="19:00">19:00</option>
+                        </select>
+                    </div>
+                    <br />
+                    <div id="Editcourse" class="select">
+                        <select name="Classroom" required>
+                           <option value="" selected disabled>Classroom</option>
+                            <option value="A1">A1</option>
+                            <option value="A2">A2</option>
+                            <option value="A3">A3</option>
+                            <option value="A4">A4</option>
+                            <option value="A5">A5</option>
+                            <option value="B1">B1</option>
+                            <option value="B2">B2</option>
+                            <option value="B3">B3</option>
+                            <option value="B4">B4</option>
+                            <option value="B5">B5</option>
+                            <option value="C1">C1</option>
+                            <option value="C2">C2</option>
+                            <option value="C3">C3</option>
+                            <option value="C4">C4</option>
+                            <option value="C5">C5</option>
+                            <option value="D1">D1</option>
+                            <option value="D2">D2</option>
+                            <option value="D3">D3</option>
+                            <option value="D4">D4</option>
+                            <option value="D5">D5</option>
+                            <option value="E1">E1</option>
+                            <option value="E2">E2</option>
+                            <option value="E3">E3</option>
+                            <option value="E4">E4</option>
+                            <option value="E5">E5</option>
+                        </select>
+                    </div>
+                    <br />
+                    <input style="position:relative;width:18em;height:30px;left:48px;" type="text" placeholder="Moad A (MM-DD-YYYY)" name="MoedA" class="input-flat email" required pattern="^([0]?[1-9]|[1][0-2])[./-]([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0-9]{4}|[0-9]{2})$" />
+                    <br />
+                    <input style="position:relative;width:18em;height:30px;left:48px;" type="text" placeholder="Moad A (MM-DD-YYYY)" name="MoedB" class="input-flat email" required pattern="^([0]?[1-9]|[1][0-2])[./-]([0]?[1-9]|[1|2][0-9]|[3][0|1])[./-]([0-9]{4}|[0-9]{2})$" />
+                    <br />
+                    <div id='main'>
+                        <div class='buttons' style="position:relative;width:15em;height:30px;left:48px;">
+                            <button name="button" type="submit" id="AssignCourse" class="btn btn-login">Update</button>
+                        </div>
+                        <p>@ViewBag.ErrorMessage</p>
+
+                    </div>
+                }
+            </div>
+
+        </div>
+        <div class="blocks" style="border-left: 1px solid #2e323e;">
+            <div class='print-black' id='content'>
+                <div class="welcome-name" style="font-size: 8px;">
+                    <h1>Update Student Grade:</h1>
+                </div>
+                @using (Html.BeginForm("ShowStudents", "Lecturer", FormMethod.Post))
+                {
+                    <div class="select">
+                        <select required id="SelectCourse" name="CourseName">
+                            <option value="" selected disabled>Course</option>
+                            @foreach (Courses obj in Model.Coursesdata)
+                            {
+                                <option value=@obj.CourseName>@obj.CourseName</option>
+                            }
+                        </select>
+                    </div>
+                    <br />
+                    <div class='buttons' style="position:relative;width:15em;height:30px;left:48px;">
+                        <button name="button" type="submit" value="Search Students" class="btn btn-login">Search Students</button>
+                    </div>
+                }
+            </div>
+            <br />
+        </div>
+    </div>
+</body>
+</html>
+
+

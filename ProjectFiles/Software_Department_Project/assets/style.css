@@ -1,0 +1,308 @@
+﻿#header .all-boards {
+    border-top: 0;
+    behavior: url(/pie/PIE.htc);
+    -moz-border-radius: 0 0 3px 3px;
+    -webkit-border-radius: 0;
+    border-radius: 0 0 3px 3px;
+    -moz-background-clip: padding;
+    -o-background-clip: padding-box;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    padding: 3px;
+    background: #1a1c22
+}
+
+    #header .all-boards .menu-item {
+        border-radius: 3px;
+        width: auto;
+        padding: 0 4px
+    }
+
+        #header .all-boards .menu-item:hover {
+            background: #292d36
+        }
+
+        #header .all-boards .menu-item a {
+            display: block
+        }
+
+    #header .all-boards .menu-separator:first-child {
+        border-top: none
+    }
+
+    #header .all-boards .disabled {
+        height: 50px
+    }
+
+        #header .all-boards .disabled a {
+            color: #4d5765
+        }
+
+        #header .all-boards .disabled .icon-plus {
+            line-height: 10px;
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background-image: url(/assets/upgrade-lock@2x-22a437c8767bfd1ffbf390a18c8e85c7b99c131b47f0dcd4215ceaf1bf52e4e0.png);
+            background-repeat: no-repeat;
+            background-size: 100%
+        }
+
+        #header .all-boards .disabled .disabled-cta {
+            line-height: 10px;
+            font-weight: normal;
+            font-size: 10px;
+            font-style: italic;
+            color: #aeaf79
+        }
+
+    #header .all-boards:after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: -6px;
+        left: 10px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-bottom: 6px solid #1d1f25
+    }
+
+.flash {
+    display: none;
+    background-color: #fdedbe;
+    color: #e8af07;
+    font-weight: bold;
+    font-size: 14px;
+    height: 49px;
+    line-height: 42px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 150
+}
+
+    .flash.error {
+        background-color: #f8acac;
+        color: #f14d4d
+    }
+
+    .flash .close {
+        float: right;
+        margin-right: 15px;
+        cursor: pointer
+    }
+
+
+.btn {
+    height: 26px;
+    line-height: 14px;
+    vertical-align: middle;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    display: inline-block;
+    padding: 5px 11px;
+    color: #697783;
+    background-color: #ebeff5;
+    border: 1px solid #a7b9d3;
+    font-size: 12px;
+    text-decoration: none;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-background-clip: padding;
+    -o-background-clip: padding-box;
+    -webkit-background-clip: padding;
+    background-clip: padding-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+    .btn:hover {
+        background-color: #f2f4f8;
+        cursor: pointer
+    }
+
+    .btn:active {
+        background-color: #e4eaf2
+    }
+
+    .btn.btn-lg {
+        padding: 4px 10px;
+        font-size: 14px;
+        height: 34px;
+        line-height: 24px
+    }
+
+    .btn.btn-primary {
+        color: #FFF;
+        border-color: #1362bb;
+        background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuNSIgeTE9IjEuMCIgeDI9IjAuNSIgeTI9IjAuMCI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzMxODhlYSIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzQ4OTVlYyIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA==");
+        background-size: 100%;
+        background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #3188ea), color-stop(100%, #4895ec));
+        background-image: -moz-linear-gradient(bottom, #3188ea 0%, #4895ec 100%);
+        background-image: -webkit-linear-gradient(bottom, #3188ea 0%, #4895ec 100%);
+        background-image: linear-gradient(to top, #3188ea 0%, #4895ec 100%)
+    }
+
+        .btn.btn-primary:hover {
+            -moz-box-shadow: 0 1px 2px rgba(72,149,236,0.5);
+            -webkit-box-shadow: 0 1px 2px rgba(72,149,236,0.5);
+            box-shadow: 0 1px 2px rgba(72,149,236,0.5)
+        }
+
+        .btn.btn-primary:active {
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            box-shadow: none
+        }
+
+    .btn.btn-login {
+        display: inline-block;
+        color: #FFF;
+        cursor: pointer;
+        font-size: 14px;
+        height: 42px;
+        width: 100%;
+        border: none;
+        background-color: #5db8d2;
+        font-weight: bold;
+        background-image: none;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        border-radius: 2px;
+        text-shadow: none
+    }
+
+        .btn.btn-login:hover {
+            background-color: #6dbfd6
+        }
+
+        .btn.btn-login:active {
+            background-color: #55b5d0
+        }
+
+        .btn.btn-login:disabled {
+            color: #bbb
+        }
+
+        .btn.btn-login:focus {
+            outline: none
+        }
+
+.input-flat {
+    color: #697783;
+    width: 100%;
+    height: 36px;
+    padding: 0 10px 2px 36px;
+    margin-bottom: 14px;
+    border: none;
+    background-color: #2e323a;
+    background-repeat: no-repeat;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+    .input-flat:-moz-placeholder {
+        color: #838ea1
+    }
+
+    .input-flat::-moz-placeholder {
+        color: #838ea1
+    }
+
+    .input-flat:-ms-input-placeholder {
+        color: #838ea1
+    }
+
+    .input-flat::-webkit-input-placeholder {
+        color: #838ea1
+    }
+
+    .input-flat:focus {
+        background-color: #363a44;
+        outline: none
+    }
+
+    .input-flat.company-name {
+        background-image: url(/assets/login-company@2x-ca99be268de0e08a910b91b2257672882504c0662b889c8e7db35c6446d37e27.png);
+        background-position: 6px 11px;
+        background-size: 25px 12px
+    }
+
+    .input-flat.password {
+        background-image: url(/assets/login-password@2x-778a239f63a6b0cd27f01a1f7b3fc8f6e4a27c6cf1a8a847eefbc0c38481aa4f.png);
+        background-size: 16px 4px;
+        background-position: 11px 17px
+    }
+
+    .input-flat.email {
+        background-image: url(/assets/login-email@2x-25df329ab6de22b16a6d2e0ddfb123e84bc1f8f39a6380ce35445bd123d9fc02.png);
+        background-size: 14px 11px;
+        background-position: 12px 11px
+    }
+
+.dn {
+    display: none
+}
+
+html, body {
+    background-color: #262930
+}
+
+form.login, form.new_user, form.password_reset, form.invitation_password, form.edit_user, form.new_account, form.confirmation {
+    position: absolute;
+    width: 300px;
+    margin: auto;
+    padding: 150px 750px;
+    transition: all 250ms ease
+}
+
+    form.login img, form.new_user img, form.password_reset img, form.invitation_password img, form.edit_user img, form.new_account img, form.confirmation img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+
+    form.login input, form.login label, form.new_user input, form.new_user label, form.password_reset input, form.password_reset label, form.invitation_password input, form.invitation_password label, form.edit_user input, form.edit_user label, form.new_account input, form.new_account label, form.confirmation input, form.confirmation label {
+        font-size: 12px
+    }
+
+    form.login .remember-me-check, form.login .remember-me-label, form.new_user .remember-me-check, form.new_user .remember-me-label, form.password_reset .remember-me-check, form.password_reset .remember-me-label, form.invitation_password .remember-me-check, form.invitation_password .remember-me-label, form.edit_user .remember-me-check, form.edit_user .remember-me-label, form.new_account .remember-me-check, form.new_account .remember-me-label, form.confirmation .remember-me-check, form.confirmation .remember-me-label {
+        display: inline-block
+    }
+
+    form.login .small-login-text, form.new_user .small-login-text, form.password_reset .small-login-text, form.invitation_password .small-login-text, form.edit_user .small-login-text, form.new_account .small-login-text, form.confirmation .small-login-text {
+        color: #697783
+    }
+
+    form.login .remember-me-label, form.new_user .remember-me-label, form.password_reset .remember-me-label, form.invitation_password .remember-me-label, form.edit_user .remember-me-label, form.new_account .remember-me-label, form.confirmation .remember-me-label {
+        color: #697783
+    }
+
+    form.login a, form.new_user a, form.password_reset a, form.invitation_password a, form.edit_user a, form.new_account a, form.confirmation a {
+        color: #707987
+    }
+
+        form.login a.lost-password, form.new_user a.lost-password, form.password_reset a.lost-password, form.invitation_password a.lost-password, form.edit_user a.lost-password, form.new_account a.lost-password, form.confirmation a.lost-password {
+            font-size: 12px
+        }
+
+    form.login .buttons, form.new_user .buttons, form.password_reset .buttons, form.invitation_password .buttons, form.edit_user .buttons, form.new_account .buttons, form.confirmation .buttons {
+        border-top: 1px solid #2F333C;
+        margin: 10px 0 20px 0;
+        padding-top: 20px
+    }
+
+    form.new_user p {
+        margin-bottom: 0;
+        text-align: center
+    }
